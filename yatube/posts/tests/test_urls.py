@@ -41,6 +41,7 @@ class PostURLTests(TestCase):
             f'/group/{self.group.slug}/': 'posts/group_list.html',
             f'/posts/{self.post.id}/': 'posts/post_detail.html',
             f'/profile/{self.user.username}/': 'posts/profile.html',
+            '/nonexisting_page/': 'core/404.html',
         }
         for address, template in templates_url_names.items():
             with self.subTest(address=address):
@@ -77,3 +78,13 @@ class PostURLTests(TestCase):
         address = f'/posts/{post_id}/edit/'
         response = self.authorized_client_2.get(address, follow=True)
         self.assertRedirects(response, reverse('posts:index'))
+
+    def test_add_comment_authorized(self):
+        """Комментарий может оставлять только авторизованный пользователь."""
+        post_id = self.post.id
+        address = f'/posts/{post_id}/comment/'
+        response = self.guest_client.get(address, follow=True)
+        self.assertRedirects(
+            response,
+            f'/auth/login/?next=/posts/{post_id}/comment/'
+        )
