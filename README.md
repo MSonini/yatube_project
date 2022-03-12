@@ -1,6 +1,6 @@
 # yatube_project
 ### Описание
-Социальная сеть блогеров
+Социальная сеть блогеров. 
 ### Технологии
 Python 3.9
 Django 2.2.19
@@ -12,7 +12,7 @@ pip install -r requirements.txt
 ``` 
 - В папке с файлом manage.py выполните команду:
 ```
-python3 manage.py runserver
+python manage.py runserver
 ```
 ### Автор
 Сонин Михаил
