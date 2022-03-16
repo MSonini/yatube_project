@@ -5,15 +5,23 @@
 HTML-шаблоны страниц также присутствуют.
 
 ### Технологии
-Python 3.9
-Django 2.2.19
+ - Python 3.9
+ - Django 2.2.19
 ### Запуск в Dev-режиме
-- Установите и активируйте виртуальное окружение
-- Установите зависимости из файла requirements.txt
+1. Установить зависимости из файла requirements.txt:
+
 ```
 pip install -r requirements.txt
-``` 
-- В папке с файлом manage.py выполните команду:
+```
+
+2. Выполнить миграции:
+
+```
+python manage.py migrate
+```
+
+3. Запустить проект:
+
 ```
 python manage.py runserver
 ```
